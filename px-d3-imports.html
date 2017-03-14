@@ -18,7 +18,7 @@
 
   })(window, document);
 
-  function onD3Loaded() {
+  function __onPxD3Loaded__() {
     Px.d3 = d3;
 
     if(typeof Px.oldD3 !== 'undefined') {
@@ -28,4 +28,4 @@
   }
 </script>
 
-<script type="text/javascript" src="../pxd3/d3.min.js" onload="onD3Loaded()"></script>
+<script type="text/javascript" src="../pxd3/d3.min.js" onload="__onPxD3Loaded__()"></script>
