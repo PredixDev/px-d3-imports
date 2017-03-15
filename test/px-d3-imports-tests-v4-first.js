@@ -19,9 +19,5 @@ function runCustomTests() {
     test('d3 is v3', function() {
       assert.equal(d3.version[0], '3');
     });
-
-    test('d3Old was not created', function() {
-      assert.isUndefined(Px.oldD3);
-    });
   });
 }

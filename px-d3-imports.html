@@ -1,31 +1,10 @@
 <!-- Import d3 without overwriting other people's d3. Maintain a link to the
      Px version of d3. -->
 
+<link rel="import" href="px-d3-imports-step-one.html" />
 <script>
-  (function(win, doc) {
-    win.Px = win.Px || {};
-    // If we already have win.Px.d3, we don't need to do anything
-    // FIXME if/when we do specific d3 packages, we'll have to change/remove this
-    if(win.Px.d3) {
-      return;
-    }
-
-    // if d3 already exists, make a copy of it
-    if(typeof d3 !== 'undefined') {
-      win.Px.oldD3 = win.d3;
-      win.d3 = {};
-    }
-
-  })(window, document);
-
-  function __onPxD3Loaded__() {
-    Px.d3 = d3;
-
-    if(typeof Px.oldD3 !== 'undefined') {
-      d3 = {};
-      d3 = Px.oldD3;
-    }
+  Px.d3 = d3;
+  if(typeof Px.oldD3 !== 'undefined') {
+    d3 = Px.oldD3;
   }
 </script>
-
-<script type="text/javascript" src="../pxd3/d3.min.js" onload="__onPxD3Loaded__()"></script>
