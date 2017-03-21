@@ -1,3 +1,7 @@
+v1.0.2
+==================
+* Adding polygit import file
+
 v1.0.1
 ==================
 * Revert to the Chevalier method of importing
