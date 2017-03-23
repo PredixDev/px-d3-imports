@@ -1,3 +1,7 @@
+v1.0.3
+==================
+* Adding polymer as dependencies
+
 v1.0.2
 ==================
 * Adding polygit import file
