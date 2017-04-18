@@ -25,7 +25,8 @@
   ],
   "dependencies": {
     "pxd3": "d3#^4.7.0",
-    "polymer": "~1.8.1"
+    "polymer": "~1.8.1",
+    "iron-ajax": "^1.4.3"
   },
   "devDependencies": {
     "d3": "^3.0.0"
