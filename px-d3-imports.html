@@ -27,6 +27,11 @@ if(typeof Px.oldD3 !== 'undefined') {
     } else {
       Px.d3.formatDefaultLocale(e.detail.response);
     }
+
+    if(requests[e.detail.url].callback) {
+      requests[e.detail.url].callback();
+    }
+
     delete requests[e.detail.url];
   });
 
@@ -70,11 +75,11 @@ if(typeof Px.oldD3 !== 'undefined') {
    * If you want to use another one you'll need provide your own config object:
    * https://github.com/d3/d3-time-format/blob/master/README.md#timeFormatDefaultLocale
    */
-  Px.d3.changeTimeLocale = function(newLocale, configObject) {
+  Px.d3.changeTimeLocale = function(newLocale, callback, configObject) {
 
     if(!configObject) {
 
-      if(!Px.d3.localeURL) {
+      if(!Px.d3.timeLocaleURL) {
         // NOTE: see http://www.2ality.com/2014/05/current-script.html
         var currentScript = document._currentScript || document.currentScript ||
             (function() {
@@ -82,14 +87,15 @@ if(typeof Px.oldD3 !== 'undefined') {
               return scripts[scripts.length - 1];
             })();
         var BASE_URI = currentScript.ownerDocument.baseURI;
-        Px.d3.localeURL =  Polymer.ResolveUrl.resolveUrl('./px-d3-imports', BASE_URI);
+        Px.d3.timeLocaleURL =  Polymer.ResolveUrl.resolveUrl('./px-d3-imports/timeLocale/', BASE_URI);
       }
 
       //try to get the locale ourselves
-      requestor.url = Px.d3.localeURL + 'timeLocale/' + newLocale + '.json';
+      requestor.url = Px.d3.timeLocaleURL + newLocale + '.json';
       requests[requestor.url] = {
         'type': 'time',
-        'localeName': newLocale
+        'localeName': newLocale,
+        'callback': callback
       };
       requestor.generateRequest();
 
@@ -156,11 +162,11 @@ if(typeof Px.oldD3 !== 'undefined') {
    * If you want to use another one you'll need provide your own config object:
    * https://github.com/d3/d3-format/blob/master/README.md#formatDefaultLocale
    */
-   Px.d3.changeNumberLocale = function(newLocale, configObject) {
+   Px.d3.changeNumberLocale = function(newLocale, callback, configObject) {
 
     if(!configObject) {
 
-      if(!Px.d3.localeURL) {
+      if(!Px.d3.numberLocaleURL) {
         // NOTE: see http://www.2ality.com/2014/05/current-script.html
         var currentScript = document._currentScript || document.currentScript ||
             (function() {
@@ -168,14 +174,15 @@ if(typeof Px.oldD3 !== 'undefined') {
               return scripts[scripts.length - 1];
             })();
         var BASE_URI = currentScript.ownerDocument.baseURI;
-        Px.d3.localeURL =  Polymer.ResolveUrl.resolveUrl('./px-d3-imports/', BASE_URI);
+        Px.d3.numberLocaleURL =  Polymer.ResolveUrl.resolveUrl('./px-d3-imports/numberLocale/', BASE_URI);
       }
 
       //try to get the locale ourselves
-      requestor.url = Px.d3.localeURL + 'numberLocale/' + newLocale + '.json';
+      requestor.url = Px.d3.numberLocaleURL + newLocale + '.json';
       requests[requestor.url] = {
         'type': 'number',
-        'localeName': newLocale
+        'localeName': newLocale,
+        'callback': callback
       };
       requestor.generateRequest();
 
