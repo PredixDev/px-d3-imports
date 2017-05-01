@@ -5,6 +5,7 @@
     "px-d3-imports.html"
   ],
   "ignore": [
+    "*.enc",
     ".*",
     "npm-debug.log",
     "gulpfile.js",
