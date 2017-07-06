@@ -1,3 +1,7 @@
+v1.0.5
+==================
+* update dependencies
+
 v1.0.4
 ==================
 * update Polymer version
