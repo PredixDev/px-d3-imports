@@ -1,8 +1,8 @@
-#px-d3-imports
+# px-d3-imports
 
 ## Overview
 
-px-d3-imports imports d3 4.x without overwriting previous d3 instances and saves the d3 4.x as Px.d3.
+Px-d3-imports imports d3 4.x without overwriting previous d3 instances and saves the d3 4.x as Px.d3.
 
 ## Usage
 
