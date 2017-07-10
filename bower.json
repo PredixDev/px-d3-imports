@@ -31,5 +31,8 @@
   },
   "devDependencies": {
     "d3": "^3.0.0"
+  },
+  "resolutions": {
+    "webcomponentsjs": "^0.7.24"
   }
 }
