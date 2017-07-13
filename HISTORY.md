@@ -1,3 +1,7 @@
+v2.0.0
+===================
+* Import promise polyfill for iron-ajax
+
 v1.0.5
 ==================
 * update dependencies
