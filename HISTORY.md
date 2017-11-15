@@ -1,3 +1,7 @@
+v2.1.0
+===================
+* Upgrade component to hybrid
+
 v2.0.0
 ===================
 * Import promise polyfill for iron-ajax
