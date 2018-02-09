@@ -7,10 +7,10 @@
 <link rel="import" href="../iron-ajax/iron-ajax.html" />
 <script>
 
-Px.d3 = d3;
+window.Px.d3 = window.d3;
 
-if(typeof Px.oldD3 !== 'undefined') {
-  d3 = Px.oldD3;
+if(typeof window.Px.oldD3 !== 'undefined') {
+  window.d3 = window.Px.oldD3;
 }
 
 //functions to change d3 locale
@@ -24,9 +24,9 @@ if(typeof Px.oldD3 !== 'undefined') {
 
     //if time locale vs locale
     if(requests[e.detail.url].type === 'time') {
-      Px.d3.timeFormatDefaultLocale(e.detail.response);
+      window.Px.d3.timeFormatDefaultLocale(e.detail.response);
     } else {
-      Px.d3.formatDefaultLocale(e.detail.response);
+      window.Px.d3.formatDefaultLocale(e.detail.response);
     }
 
     if(requests[e.detail.url].callback) {
@@ -39,7 +39,7 @@ if(typeof Px.oldD3 !== 'undefined') {
   requestor.addEventListener('iron-ajax-error', function(e) {
 
     //error loading
-    var request = e.detail.request;
+    var request = e.detail.request,
         d3Url = requests[request.url].type === 'time' ? 'https://github.com/d3/d3-time-format/blob/master/README.md#timeFormatDefaultLocale' : 'https://github.com/d3/d3-format#formatDefaultLocale';
     console.warn('couldn\'t find d3 ' + requests[request.url].type + ' locale for ' + requests[request.url].localeName + '. Consider providing your own: ' + d3Url);
 
@@ -76,11 +76,11 @@ if(typeof Px.oldD3 !== 'undefined') {
    * If you want to use another one you'll need provide your own config object:
    * https://github.com/d3/d3-time-format/blob/master/README.md#timeFormatDefaultLocale
    */
-  Px.d3.changeTimeLocale = function(newLocale, callback, configObject) {
+  window.Px.d3.changeTimeLocale = function(newLocale, callback, configObject) {
 
     if(!configObject) {
 
-      if(!Px.d3.timeLocaleURL) {
+      if(!window.Px.d3.timeLocaleURL) {
         // NOTE: see http://www.2ality.com/2014/05/current-script.html
         var currentScript = document._currentScript || document.currentScript ||
             (function() {
@@ -88,11 +88,11 @@ if(typeof Px.oldD3 !== 'undefined') {
               return scripts[scripts.length - 1];
             })();
         var BASE_URI = currentScript.ownerDocument.baseURI;
-        Px.d3.timeLocaleURL =  Polymer.ResolveUrl.resolveUrl('./px-d3-imports/timeLocale/', BASE_URI);
+        window.Px.d3.timeLocaleURL =  Polymer.ResolveUrl.resolveUrl('./px-d3-imports/timeLocale/', BASE_URI);
       }
 
       //try to get the locale ourselves
-      requestor.url = Px.d3.timeLocaleURL + newLocale + '.json';
+      requestor.url = window.Px.d3.timeLocaleURL + newLocale + '.json';
       requests[requestor.url] = {
         'type': 'time',
         'localeName': newLocale,
@@ -101,7 +101,7 @@ if(typeof Px.oldD3 !== 'undefined') {
       requestor.generateRequest();
 
     } else {
-      Px.d3.timeFormatDefaultLocale(configObject);
+      window.Px.d3.timeFormatDefaultLocale(configObject);
     }
   };
   /**
@@ -163,11 +163,11 @@ if(typeof Px.oldD3 !== 'undefined') {
    * If you want to use another one you'll need provide your own config object:
    * https://github.com/d3/d3-format/blob/master/README.md#formatDefaultLocale
    */
-   Px.d3.changeNumberLocale = function(newLocale, callback, configObject) {
+   window.Px.d3.changeNumberLocale = function(newLocale, callback, configObject) {
 
     if(!configObject) {
 
-      if(!Px.d3.numberLocaleURL) {
+      if(!window.Px.d3.numberLocaleURL) {
         // NOTE: see http://www.2ality.com/2014/05/current-script.html
         var currentScript = document._currentScript || document.currentScript ||
             (function() {
@@ -175,11 +175,11 @@ if(typeof Px.oldD3 !== 'undefined') {
               return scripts[scripts.length - 1];
             })();
         var BASE_URI = currentScript.ownerDocument.baseURI;
-        Px.d3.numberLocaleURL =  Polymer.ResolveUrl.resolveUrl('./px-d3-imports/numberLocale/', BASE_URI);
+        window.Px.d3.numberLocaleURL =  Polymer.ResolveUrl.resolveUrl('./px-d3-imports/numberLocale/', BASE_URI);
       }
 
       //try to get the locale ourselves
-      requestor.url = Px.d3.numberLocaleURL + newLocale + '.json';
+      requestor.url = window.Px.d3.numberLocaleURL + newLocale + '.json';
       requests[requestor.url] = {
         'type': 'number',
         'localeName': newLocale,
@@ -188,7 +188,7 @@ if(typeof Px.oldD3 !== 'undefined') {
       requestor.generateRequest();
 
     } else {
-      Px.d3.formatDefaultLocale(configObject);
+      window.Px.d3.formatDefaultLocale(configObject);
     }
   };
 })()

@@ -1,3 +1,8 @@
+v3.0.0
+===================
+* Prefix window objects with `window.`
+* Upgrade to d3 v5.x
+
 v2.1.0
 ===================
 * Upgrade component to hybrid
