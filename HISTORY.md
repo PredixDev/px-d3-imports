@@ -1,3 +1,7 @@
+v3.0.1
+===================
+* fixed version in Polymer v1 build
+
 v3.0.0
 ===================
 * Prefix window objects with `window.`
