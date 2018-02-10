@@ -8,8 +8,8 @@ function runCustomTests() {
       assert.isDefined(Px.d3);
     });
 
-    test('Px.d3 is v4', function() {
-      assert.equal(Px.d3.version[0], '4');
+    test('Px.d3 is v5', function() {
+      assert.equal(Px.d3.version[0], '5');
     });
 
     test('d3 exists', function() {
