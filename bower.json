@@ -25,8 +25,8 @@
     ".editorconfig"
   ],
   "dependencies": {
-    "pxd3": "d3#^5.0.0",
-    "polymer": "#1.9 - 2",
+    "pxd3": "mbostock-bower/d3#^5.0.0",
+    "polymer": "1.9 - 2",
     "iron-ajax": "^2.0.0",
     "promise-polyfill": "polymerlabs/promise-polyfill#^2.0.0"
   },
@@ -40,7 +40,7 @@
   "variants": {
     "1.x": {
       "dependencies": {
-        "pxd3": "d3#^5.0.0",
+        "pxd3": "mbostock-bower/d3#^5.0.0",
         "polymer": "^1.9.0",
         "iron-ajax": "^2.0.0",
         "promise-polyfill": "polymerlabs/promise-polyfill#^2.0.0"
